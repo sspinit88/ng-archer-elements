@@ -79,7 +79,7 @@ describe('ArcherFormFieldComponent', () => {
   it('should set class="el-archer-untouched el-archer-pristine el-archer-invalid" after init', () => {
     fixture.detectChanges();
     const res = !!fixture.nativeElement.querySelector('.el-archer-untouched.el-archer-pristine.el-archer-invalid');
-    expect(!!res).toBeTruthy();
+    expect(res).toBeTruthy();
   });
 
   it('should create fake component with elements', () => {
