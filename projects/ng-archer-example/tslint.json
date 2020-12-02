@@ -1,17 +1,220 @@
 {
-  "extends": "../../tslint.json",
+  "extends": "tslint:recommended",
   "rules": {
+    "array-type": false,
+    "arrow-parens": false,
+    "deprecation": {
+      "severity": "warning"
+    },
+    "contextual-lifecycle": true,
     "directive-selector": [
       true,
       "attribute",
-      "app",
-      "camelCase"
+      [
+        "app",
+        "el"
+      ],
+      "camelCase",
+      "kebab-case"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      [
+        "app",
+        "el"
+      ],
       "kebab-case"
-    ]
-  }
+    ],
+    "import-blacklist": [
+      true,
+      "rxjs/Rx"
+    ],
+    "interface-name": false,
+    "max-classes-per-file": false,
+    "member-ordering": [
+      true,
+      {
+        "order": [
+          "static-field",
+          "instance-field",
+          "static-method",
+          "instance-method"
+        ]
+      }
+    ],
+    "no-consecutive-blank-lines": false,
+    "no-redundant-jsdoc": true,
+    "object-literal-key-quotes": [
+      false
+      //      "as-needed"
+    ],
+    "ordered-imports": false,
+    "trailing-comma": false,
+    "no-conflicting-lifecycle": true,
+    "no-output-native": true,
+    "template-banana-in-box": true,
+    "template-no-negated-async": true,
+    ////////////////////////////////////////
+    // Запрещает debugger
+    "no-debugger": true,
+    // Предупреждает, если супер () появляется дважды в конструкторе.
+    "no-duplicate-super": true,
+    // Запрещает пустые блоки.
+    "no-empty": false,
+    // Запрещает пустые интерфейсы.
+    "no-empty-interface": true,
+    // Запрещает множественные определения переменных в одном объявлении.
+    "one-variable-per-declaration": false,
+    // Запрещает eval
+    "no-eval": true,
+    // Запрещает явные объявления типов для переменных или параметров, инициализированных числом, строкой или логическим значением.
+    "no-inferrable-types": [
+      false,
+      "ignore-params"
+    ],
+    // Предупреждает о явных попытках определить конструкторы для интерфейсов или newдля классов.
+    "no-misused-new": true,
+    // Запрещает ненулевые утверждения, используя !постфиксный оператор.
+    "no-non-null-assertion": true,
+    // Запрещает попадание в регистр.
+    "no-switch-case-fall-through": false,
+    // Запрещает использование переменных до их объявления.
+    "no-use-before-declare": true,
+    // Запрещает использование операторов require за исключением операторов import.
+    "no-var-requires": false,
+    // Запрещает использовать оператор запятой.
+    "ban-comma-operator": false,
+    // Запрещает теневые объявления переменных.
+    "no-shadowed-variable": true,
+    // Предлагает конвертировать () => { return x; }в () => x.
+    "arrow-return-shorthand": true,
+    // Применяет имена классов и интерфейсов PascalCased.
+    "class-name": true,
+    // Применяет правила форматирования для однострочных комментариев.
+    "comment-format": [
+      true,
+      "check-space"
+    ],
+    // Применяет брекеты для if/ for/ do/ while операторов.
+    "curly": true,
+    // Гарантирует, что файл заканчивается новой строкой.
+    "eofline": true,
+    // Требует, чтобы for ... in утверждение было отфильтровано с if утверждением.
+    "forin": false,
+    // Обеспечивает правильный интервал между ключевыми словами оператора импорта
+    "import-spacing": true,
+    // Предпочитаю объявление интерфейса над литералом типа ( type T = { ... })
+    "interface-over-type-literal": true,
+    //
+    "label-position": true,
+    // Требуется, чтобы строки были под определенной максимальной длиной.
+    "max-line-length": [
+      true,
+      140
+    ],
+    // Требует явных объявлений видимости для членов класса.
+    "member-access": false,
+    // Запрещает использование arguments.callee.
+    "no-arg": true,
+    // Запрещает побитовые операторы.
+    "no-bitwise": true,
+    // Запрещает использование указанных console методов.
+    "no-console": [
+      true,
+      "debug",
+      "info",
+      "time",
+      "timeEnd",
+      "trace",
+      "log"
+    ],
+    // Запрещает доступ к конструкторам String, Number и Boolean.
+    "no-construct": true,
+    // Запрещает ненужный доступ к строковому литералу.
+    "no-string-literal": false,
+    // Флаги, бросающие простые строки или конкатенации строк.
+    "no-string-throw": true,
+    // Запрещает конечные пробелы в конце строки.
+    "no-trailing-whitespace": false,
+    // Запрещает инициализировать оператор 'var' / 'let' или инициализатор деструктуризации значением 'undefined'.
+    "no-unnecessary-initializer": true,
+    // Запрещает использование var
+    "no-var-keyword": true,
+    // Проверяет порядок ключей в литералах объекта.
+    "object-literal-sort-keys": false,
+    //
+    "one-line": [
+      true,
+      "check-open-brace",
+      "check-catch",
+      "check-else",
+      "check-whitespace"
+    ],
+    // Требует, чтобы объявления переменных использовали const вместо let и, var если возможно.
+    "prefer-const": true,
+    // Обеспечивает использование символа кавычки для строковых литералов.
+    "quotemark": [
+      true,
+      "single"
+    ],
+    // Обеспечивает последовательное использование точек с запятой в конце каждого оператора.
+    "semicolon": [
+      true,
+      "always",
+      "ignore-bound-class-methods"
+    ],
+    // ребуется ===и !==на месте ==и !=.
+    "triple-equals": [
+      true,
+      "allow-null-check"
+    ],
+    // Требует или запрещает пробелы для определений типов.
+    "typedef-whitespace": [
+      true,
+      {
+        "call-signature": "nospace",
+        "index-signature": "nospace",
+        "parameter": "nospace",
+        "property-declaration": "nospace",
+        "variable-declaration": "nospace"
+      }
+    ],
+    // Предупреждает о любых двух перегрузках, которые могут быть объединены в одну с помощью объединения или необязательного параметра / rest.
+    "unified-signatures": true,
+    // Проверяет имена переменных на наличие различных ошибок.
+    "variable-name": false,
+    // Обеспечивает соблюдение правил использования пробельных стилей.
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-separator",
+      "check-type"
+    ],
+    // без вывода по префиксу
+    "no-output-on-prefix": true,
+    // Используйте @Input декоратор, а не inputs свойство @Component и @Directive метаданные.
+    "no-inputs-metadata-property": true,
+    //
+    "no-outputs-metadata-property": true,
+    // Используйте декоратор @HostProperty, а не host свойство @Component и @Directive метаданные.
+    "no-host-metadata-property": true,
+    // Запрещает переименовывать входные директивы, предоставляя строку декоратору.
+    "no-input-rename": true,
+    // Запрещает переименовывать выходные данные директивы, предоставляя строку декоратору.
+    "no-output-rename": true,
+    // Убедитесь, что компоненты реализуют интерфейсы жизненного цикла, если они их используют.
+    "use-lifecycle-interface": true,
+    // Гарантирует, что классы, украшенные @Pipe, реализуют интерфейс PipeTransform.
+    "use-pipe-transform-interface": true,
+    // Классы, украшенные @Component, должны иметь суффикс «Компонент» (или пользовательский) в своем имени.
+    "component-class-suffix": true,
+    // Классы, украшенные @Directive, должны иметь суффикс «Directive» (или пользовательский) в своем названии.
+    "directive-class-suffix": true
+  },
+  "rulesDirectory": [
+    "codelyzer"
+  ]
 }
