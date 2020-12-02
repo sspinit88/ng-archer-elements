@@ -24,9 +24,9 @@ export class AppComponent implements AfterViewInit {
       .valueChanges
       .subscribe(value => {
         // FIXME delete
-        console.group('Class: AppComponent, Method: , File: app.component.ts');
-        console.log('value():', value);
-        console.groupEnd();
+        // console.group('Class: AppComponent, Method: , File: app.component.ts');
+        // console.log('value():', value);
+        // console.groupEnd();
       });
   }
 

@@ -1,6 +1,5 @@
 {
   "hooks": {
-
-    "pre-push": "ng lint"
+    "pre-commit": "ng lint",
   }
 }
