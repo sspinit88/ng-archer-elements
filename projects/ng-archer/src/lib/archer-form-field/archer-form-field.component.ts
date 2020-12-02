@@ -1,7 +1,6 @@
 import { AfterContentChecked, Component, ContentChild, HostBinding } from '@angular/core';
 import { ArcherFormControlDirective } from './archer-form-control.directive';
 
-
 @Component({
   selector: 'ar-form-field',
   templateUrl: './archer-form-field.component.html',
@@ -17,7 +16,7 @@ export class ArcherFormFieldComponent
   }
 
   ngAfterContentChecked(): void {
-    this.formControlDirective.controlInit();
+    this.formControlDirective.controlInit()
   }
 
   @HostBinding('class.el-archer-touched') get isTouched(): boolean {
