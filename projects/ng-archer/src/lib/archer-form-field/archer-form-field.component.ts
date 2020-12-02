@@ -16,7 +16,7 @@ export class ArcherFormFieldComponent
   }
 
   ngAfterContentChecked(): void {
-    this.formControlDirective.controlInit()
+    this.formControlDirective.controlInit();
   }
 
   @HostBinding('class.el-archer-touched') get isTouched(): boolean {

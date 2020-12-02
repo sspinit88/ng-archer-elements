@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ArcherFormControlDirective } from './archer-form-control.directive';
 import { ArcherFormFieldComponent } from './archer-form-field.component';
 import { By } from '@angular/platform-browser';
 import { ArcherFormControlModule } from './archer-form-control.module';
 
 
 @Component({
-  selector: 'app-fake',
+  selector: 'ar-fake',
   template: `
     <form [formGroup]="form">
       <ar-form-field id="element">

@@ -5,7 +5,7 @@ import { ArcherFormControlDirective } from './archer-form-control.directive';
 import { OTHERS_ERROR } from './error-message.constants';
 
 @Component({
-  selector: 'app-fake',
+  selector: 'ar-fake',
   template: `
     <form [formGroup]="form">
       <input formControlName="first"
