@@ -65,7 +65,7 @@ describe('ArcherFormFieldComponent', () => {
     elFirst.nativeElement.querySelector('input').dispatchEvent(new Event('blur'));
     fixture.detectChanges();
     const res = !!fixture.nativeElement.querySelector('.el-archer-touched.el-archer-dirty.el-archer-valid');
-    expect(!!res).toBeTruthy();
+    expect(res).toBeTruthy();
   });
 
   it('should set class="el-archer-pristine el-archer-invalid el-archer-touched" after blur', () => {
