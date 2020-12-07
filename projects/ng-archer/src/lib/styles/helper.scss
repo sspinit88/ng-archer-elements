@@ -1,0 +1,25 @@
+/// --- # --- mixins ---
+@mixin ears() {
+  &.after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50vw;
+    right: -50vw;
+    z-index: -1;
+    margin: auto;
+
+    display: block;
+    height: 100%;
+    width: 100vw;
+    background-color: inherit;
+  }
+}
+
+
+//// --- стили только для Firefox
+@mixin firefox() {
+  @-moz-document url-prefix() {
+    @content;
+  }
+}
