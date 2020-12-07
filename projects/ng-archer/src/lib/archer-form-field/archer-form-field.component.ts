@@ -19,35 +19,35 @@ export class ArcherFormFieldComponent
     this.formControlDirective.controlInit();
   }
 
-  @HostBinding('class.el-archer-touched') get isTouched(): boolean {
+  @HostBinding('class.ar-touched') get isTouched(): boolean {
     return this.formControlDirective.isTouched;
   }
 
-  @HostBinding('class.el-archer-untouched') get isUnTouched(): boolean {
+  @HostBinding('class.ar-untouched') get isUnTouched(): boolean {
     return this.formControlDirective.isUnTouched;
   }
 
-  @HostBinding('class.el-archer-pending') get isPending(): boolean {
+  @HostBinding('class.ar-pending') get isPending(): boolean {
     return this.formControlDirective.isPending;
   }
 
-  @HostBinding('class.el-archer-pristine') get isPristine(): boolean {
+  @HostBinding('class.ar-pristine') get isPristine(): boolean {
     return this.formControlDirective.isPristine;
   }
 
-  @HostBinding('class.el-archer-dirty') get isDirty(): boolean {
+  @HostBinding('class.ar-dirty') get isDirty(): boolean {
     return this.formControlDirective.isDirty;
   }
 
-  @HostBinding('class.el-archer-disabled') get isDisabled(): boolean {
+  @HostBinding('class.ar-disabled') get isDisabled(): boolean {
     return this.formControlDirective.isDisabled;
   }
 
-  @HostBinding('class.el-archer-valid') get isValid(): boolean {
+  @HostBinding('class.ar-valid') get isValid(): boolean {
     return this.formControlDirective.isValid;
   }
 
-  @HostBinding('class.el-archer-invalid') get isInvalid(): boolean {
+  @HostBinding('class.ar-invalid') get isInvalid(): boolean {
     return this.formControlDirective.isInvalid;
   }
 

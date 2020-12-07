@@ -2,17 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ArcherTabComponent } from './archer-tab/archer-tab.component';
-import { TabPanelComponent } from './tab-panel/tab-panel.component';
-
+import { ArcherTabPanelComponent } from './archer-tab-panel/archer-tab-panel.component';
 
 const itemComponents: any[] = [
-  TabPanelComponent,
+  ArcherTabPanelComponent,
   ArcherTabComponent,
 ];
 
 @NgModule({
   declarations: [
     ...itemComponents,
+
   ],
   imports: [
     CommonModule,

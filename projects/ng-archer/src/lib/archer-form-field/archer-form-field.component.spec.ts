@@ -58,27 +58,27 @@ describe('ArcherFormFieldComponent', () => {
       });
   });
 
-  it('should set class="el-archer-touched el-archer-dirty el-archer-valid" if value exist', () => {
+  it('should set class="ar-touched ar-dirty ar-valid" if value exist', () => {
     fixture.detectChanges();
     elFirst.nativeElement.querySelector('input').value = 'test value';
     elFirst.nativeElement.querySelector('input').dispatchEvent(new Event('input'));
     elFirst.nativeElement.querySelector('input').dispatchEvent(new Event('blur'));
     fixture.detectChanges();
-    const res = !!fixture.nativeElement.querySelector('.el-archer-touched.el-archer-dirty.el-archer-valid');
+    const res = !!fixture.nativeElement.querySelector('.ar-touched.ar-dirty.ar-valid');
     expect(res).toBeTruthy();
   });
 
-  it('should set class="el-archer-pristine el-archer-invalid el-archer-touched" after blur', () => {
+  it('should set class="ar-pristine ar-invalid ar-touched" after blur', () => {
     fixture.detectChanges();
     elFirst.nativeElement.querySelector('input').dispatchEvent(new Event('blur'));
     fixture.detectChanges();
-    const res = !!fixture.nativeElement.querySelector('.el-archer-pristine.el-archer-invalid.el-archer-touched');
+    const res = !!fixture.nativeElement.querySelector('.ar-pristine.ar-invalid.ar-touched');
     expect(res).toBeTruthy();
   });
 
-  it('should set class="el-archer-untouched el-archer-pristine el-archer-invalid" after init', () => {
+  it('should set class="ar-untouched ar-pristine ar-invalid" after init', () => {
     fixture.detectChanges();
-    const res = !!fixture.nativeElement.querySelector('.el-archer-untouched.el-archer-pristine.el-archer-invalid');
+    const res = !!fixture.nativeElement.querySelector('.ar-untouched.ar-pristine.ar-invalid');
     expect(res).toBeTruthy();
   });
 
