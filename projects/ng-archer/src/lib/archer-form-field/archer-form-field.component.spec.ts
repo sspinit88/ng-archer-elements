@@ -40,7 +40,7 @@ describe('ArcherFormFieldComponent', () => {
   let elFirst;
 
   beforeEach(async () => {
-    TestBed.configureTestingModule({
+    await TestBed.configureTestingModule({
       declarations: [
         FakeComponent,
       ],

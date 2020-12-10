@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { OTHERS_ERROR } from '../../messages/error-message.constants';
 import { ArcherTab } from '../interfaces/archer-tab.interface';
 
 @Component({
@@ -11,7 +12,7 @@ export class ArcherTabComponent
 
   @Input() title: string;
   @Input() selected: boolean = false;
-  @Input() link: string = '';
+  @Input() num: number = null;
 
   constructor() {
   }

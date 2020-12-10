@@ -6,7 +6,7 @@
     "start": "ng serve",
     "start-with-test": "concurrently \"npm run start\" \"npm run test\"",
     "build": "ng test ng-archer --watch=false && ng build --prod",
-    "test": "ng test",
+    "test": "ng test ng-archer",
     "code-coverage": "ng test ng-archer --watch=false --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e"

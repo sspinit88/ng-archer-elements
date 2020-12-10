@@ -1,5 +1,39 @@
-<ul>
-  <li class="ar-tab-panel-btn"></li>
-</ul>
+<div class="ar-tab-wrapper">
 
-<ng-content></ng-content>
+  <div class="ar-tab-wrapper__header">
+
+    <ng-container *ngIf="tabs">
+      <ul class="ar-tab-header">
+        <li *ngFor="let tab of tabs"
+            class="ar-tab-btn">
+          <div class="ar-tab-btn__title">
+            <span class="text">
+              {{ tab.title }}
+            </span>
+            <span *ngIf="!!tab.num"
+                  class="num">
+              {{ tab.num }}
+            </span>
+          </div>
+          <div class="ar-tab-btn__title_shadow">
+            <span class="text">
+              {{ tab.title }}
+            </span>
+            <span *ngIf="!!tab.num"
+                  class="num">
+              {{ tab.num }}
+            </span>
+          </div>
+        </li>
+      </ul>
+    </ng-container>
+
+  </div>
+
+  <div class="ar-tab-wrapper__content">
+    <ng-content></ng-content>
+  </div>
+
+</div>
+
+

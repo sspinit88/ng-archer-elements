@@ -5,10 +5,40 @@
   position: relative;
 
   .ar-tab {
-    &-panel-btn {
+    &-wrapper {
+      &__header {
 
+      }
+
+      &__content {
+
+      }
+    }
+
+    &-header {
+      display: inline-flex;
+    }
+
+    &-btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      height: 48px;
+      padding: 0 24px;
+
+      &__title {
+        &_shadow {
+          font-weight: 700;
+          color: transparent;
+          opacity: 0;
+          height: 1px;
+          overflow: hidden;
+          visibility: hidden;
+        }
+      }
     }
   }
-
 
 }
