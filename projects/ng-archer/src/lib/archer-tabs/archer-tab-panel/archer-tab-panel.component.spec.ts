@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { ArcherTabsModule } from '../archer-tabs.module';
 import { ArcherTabComponent } from '../archer-tab/archer-tab.component';
 import { ArcherTabPanelComponent } from './archer-tab-panel.component';
+import { OTHERS_ERROR } from '../../messages/error-message.constants';
 
 @Component({
   selector: 'ar-fake',
@@ -73,8 +74,75 @@ describe('ArcherTabPanelComponent', () => {
         tabs = fixture
           .debugElement
           .queryAll(By.directive(ArcherTabComponent));
-
       });
+  });
+
+  it(`should throw error: ${OTHERS_ERROR.elementIsMissing}`, () => {
+    fixture.detectChanges();
+
+    tabPanel.componentInstance.tabs = undefined;
+
+    expect(() => {
+      tabPanel
+        .componentInstance
+        .ngAfterContentInit();
+    }).toThrow(new Error(OTHERS_ERROR.elementIsMissing));
+  });
+
+  it('should select third tab after click', () => {
+    const tabNum: number = 2;
+
+    fixture.detectChanges();
+
+    tabPanel
+      .nativeElement
+      .querySelectorAll('.ar-tab-btn')[tabNum]
+      .dispatchEvent(new Event('click'));
+
+    fixture.detectChanges();
+
+    const res = tabPanel
+      .nativeElement
+      .querySelectorAll('.ar-tab-btn')[tabNum]
+      .classList
+      .contains('selected');
+
+    expect(res).toBeTrue();
+  });
+
+  it('should select second tab after click', () => {
+    const tabNum: number = 1;
+
+    fixture.detectChanges();
+
+    tabPanel
+      .nativeElement
+      .querySelectorAll('.ar-tab-btn')[tabNum]
+      .dispatchEvent(new Event('click'));
+
+    fixture.detectChanges();
+
+    const res = tabPanel
+      .nativeElement
+      .querySelectorAll('.ar-tab-btn')[1]
+      .classList
+      .contains('selected');
+
+    expect(res).toBeTrue();
+  });
+
+  it(`should select first tab`, () => {
+    const tabNum: number = 0;
+
+    fixture.detectChanges();
+
+    const res = tabPanel
+      .nativeElement
+      .querySelectorAll('.ar-tab-btn')[tabNum]
+      .classList
+      .contains('selected');
+
+    expect(res).toBeTrue();
   });
 
   it('should set all title of tabs', () => {

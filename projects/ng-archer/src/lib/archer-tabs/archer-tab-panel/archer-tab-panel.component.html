@@ -5,6 +5,8 @@
     <ng-container *ngIf="tabs">
       <ul class="ar-tab-header">
         <li *ngFor="let tab of tabs"
+            (click)="onSelect(tab)"
+            [ngClass]="setClass(tab)"
             class="ar-tab-btn">
           <div class="ar-tab-btn__title">
             <span class="text">

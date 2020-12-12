@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port 4205 --open",
     "start-with-test": "concurrently \"npm run start\" \"npm run test\"",
     "build": "ng test ng-archer --watch=false && ng build --prod",
     "test": "ng test ng-archer",
