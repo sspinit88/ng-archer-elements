@@ -1,11 +1,12 @@
 <ar-archer-tab-panel>
   <ar-archer-tab [title]="'sadasasdasd-Первый'"
-                 [selected]="false">
+                 [selected]="false"
+                 [disabled]="true">
 
     <form [formGroup]="form">
       <ar-form-field>
         <input formControlName="inp"
-               type="text" >
+               type="text">
       </ar-form-field>
       <p> Результат ввода: <span>{{ inputValue }}</span></p>
     </form>
@@ -18,6 +19,6 @@
 
   <ar-archer-tab [title]="'3-Первый'"
                  [selected]="false">
-   3
+    3
   </ar-archer-tab>
 </ar-archer-tab-panel>

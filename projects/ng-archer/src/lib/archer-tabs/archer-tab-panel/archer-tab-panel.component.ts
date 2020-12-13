@@ -29,6 +29,10 @@ export class ArcherTabPanelComponent
   }
 
   onSelect(tab: ArcherTabComponent): void {
+    if (!!tab.disabled) {
+      return;
+    }
+
     this.tabs.forEach(item => item.selected = false);
     tab.selected = true;
   }
@@ -48,6 +52,12 @@ export class ArcherTabPanelComponent
           }
         });
     }
+  }
+
+  // FIXME продолжить с этого места
+  checkSelectedTabNumber(num: number, tabs: QueryList<ArcherTabComponent>): void {
+    const tabsArray = tabs.toArray();
+    // console.log('tabsArray():', tabsArray);
   }
 
   setClass(tab: ArcherTabComponent): {} {

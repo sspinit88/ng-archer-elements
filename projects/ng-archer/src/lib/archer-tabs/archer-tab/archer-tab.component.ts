@@ -13,7 +13,8 @@ export class ArcherTabComponent
   title: string;
 
   @Input()
-  @HostBinding('class.selected') selected: boolean = false;
+  @HostBinding('class.selected')
+  selected: boolean = false;
 
   @Input()
   num: number = null;
