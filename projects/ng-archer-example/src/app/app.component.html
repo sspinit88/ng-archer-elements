@@ -1,22 +1,23 @@
-<form [formGroup]="form">
-  <ar-form-field>
-    <input formControlName="inp"
-           type="text">
-  </ar-form-field>
-</form>
-<br>
-<br>
-<br>
 <ar-archer-tab-panel>
-  <ar-archer-tab [title]="'1-Первый'"
+  <ar-archer-tab [title]="'sadasasdasd-Первый'"
                  [selected]="false">
+
+    <form [formGroup]="form">
+      <ar-form-field>
+        <input formControlName="inp"
+               type="text" >
+      </ar-form-field>
+      <p> Результат ввода: <span>{{ inputValue }}</span></p>
+    </form>
   </ar-archer-tab>
 
   <ar-archer-tab [title]="'2-Первый'"
                  [selected]="false">
+    <p>2</p>
   </ar-archer-tab>
 
   <ar-archer-tab [title]="'3-Первый'"
                  [selected]="false">
+   3
   </ar-archer-tab>
 </ar-archer-tab-panel>

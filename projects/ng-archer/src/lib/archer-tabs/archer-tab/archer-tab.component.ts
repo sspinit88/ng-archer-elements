@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
 import { ArcherTab } from '../interfaces/archer-tab.interface';
 
 @Component({
@@ -9,9 +9,17 @@ import { ArcherTab } from '../interfaces/archer-tab.interface';
 export class ArcherTabComponent
   implements ArcherTab {
 
-  @Input() title: string;
-  @Input() selected: boolean = false;
-  @Input() num: number = null;
+  @Input()
+  title: string;
+
+  @Input()
+  @HostBinding('class.selected') selected: boolean = false;
+
+  @Input()
+  num: number = null;
+
+  @Input()
+  disabled: boolean = false;
 
   constructor() {
   }

@@ -1,0 +1,26 @@
+:host {
+  display: block;
+  position: relative;
+  width: 100%;
+
+  opacity: 0;
+  overflow: hidden;
+  visibility: hidden;
+  z-index: -1;
+
+  .ar-tab {
+    &-field {
+      position: fixed;
+      top: 48px;
+      left: 0;
+
+      padding: 24px 0 24px 0;
+    }
+  }
+}
+
+:host(.selected) {
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
+}

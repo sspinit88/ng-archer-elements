@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ContentChildren, Input, QueryList } from '@angular/core';
+import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, Input, QueryList } from '@angular/core';
 import { ArcherTabComponent } from '../archer-tab/archer-tab.component';
 import { OTHERS_ERROR } from '../../messages/error-message.constants';
 
@@ -8,14 +8,17 @@ import { OTHERS_ERROR } from '../../messages/error-message.constants';
   styleUrls: [
     './../../styles/reset.scss',
     './archer-tab-panel.component.scss',
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArcherTabPanelComponent
   implements AfterContentInit {
 
-  @ContentChildren(ArcherTabComponent) tabs: QueryList<ArcherTabComponent>;
+  @ContentChildren(ArcherTabComponent)
+  tabs: QueryList<ArcherTabComponent>;
 
-  @Input() defaultSelectedTabNum: number = 0;
+  @Input()
+  readonly defaultSelectedTabNum: number = 0;
 
   constructor() {
   }

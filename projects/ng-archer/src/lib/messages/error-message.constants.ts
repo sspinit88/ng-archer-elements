@@ -1,5 +1,5 @@
-export const OTHERS_ERROR = {
-  NaN: 'Передано не число',
-  componentIsMissing: 'Отстутствует привязка к компоненту',
-  elementIsMissing: 'Отстутствует привязка к элементу',
-};
+export enum OTHERS_ERROR {
+  isNan = 'Передано не число',
+  componentIsMissing = 'Отстутствует привязка к компоненту',
+  elementIsMissing = 'Отстутствует привязка к элементу',
+}

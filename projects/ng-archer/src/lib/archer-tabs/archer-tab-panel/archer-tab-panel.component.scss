@@ -3,11 +3,18 @@
 :host {
   display: inline-block;
   position: relative;
+  overflow: hidden;
+  font-weight: $fw-normal;
 
   .ar-tab {
     &-wrapper {
       &__header {
-
+        &_line {
+          position: relative;
+          z-index: 1;
+          height: 1px;
+          background-color: rgba($grey-middle, .5);
+        }
       }
 
       &__content {
@@ -25,19 +32,49 @@
       justify-content: center;
       align-items: center;
 
+      position: relative;
+
       height: 48px;
       padding: 0 24px;
 
       cursor: pointer;
 
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        height: 2px;
+        width: 100%;
+        background-color: $accent;
+        opacity: 0;
+        z-index: 10;
+      }
+
       &__title {
+        font-weight: $fw-normal;
+        text-align: center;
+        color: $grey-middle;
+
         &_shadow {
-          font-weight: 700;
+          font-weight: $fw-bold;
           color: transparent;
           opacity: 0;
-          height: 1px;
+          height: 0;
           overflow: hidden;
           visibility: hidden;
+        }
+      }
+
+      &.selected {
+        &:after {
+          opacity: 1;
+          transition: opacity $timing-function $duration;
+        }
+
+        & > .ar-tab-btn__title {
+          color: $black;
+          //font-weight: $fw-bold !important;
         }
       }
     }

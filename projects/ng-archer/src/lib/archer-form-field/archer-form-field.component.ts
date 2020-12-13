@@ -1,10 +1,11 @@
-import { AfterContentChecked, Component, ContentChild, HostBinding } from '@angular/core';
+import { AfterContentChecked, ChangeDetectionStrategy, Component, ContentChild, HostBinding } from '@angular/core';
 import { ArcherFormControlDirective } from './archer-form-control.directive';
 
 @Component({
   selector: 'ar-form-field',
   templateUrl: './archer-form-field.component.html',
-  styleUrls: ['./archer-form-field.component.scss']
+  styleUrls: ['./archer-form-field.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArcherFormFieldComponent
   implements AfterContentChecked {

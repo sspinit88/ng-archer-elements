@@ -77,7 +77,7 @@ describe('ArcherTabPanelComponent', () => {
       });
   });
 
-  it(`should throw error: ${OTHERS_ERROR.elementIsMissing}`, () => {
+  it(`should throw an error: ${OTHERS_ERROR.elementIsMissing}`, () => {
     fixture.detectChanges();
 
     tabPanel.componentInstance.tabs = undefined;
@@ -89,7 +89,7 @@ describe('ArcherTabPanelComponent', () => {
     }).toThrow(new Error(OTHERS_ERROR.elementIsMissing));
   });
 
-  it('should select third tab after click', () => {
+  it('should select the third tab after clicking', () => {
     const tabNum: number = 2;
 
     fixture.detectChanges();
@@ -110,7 +110,7 @@ describe('ArcherTabPanelComponent', () => {
     expect(res).toBeTrue();
   });
 
-  it('should select second tab after click', () => {
+  it('should select the second tab after clicking', () => {
     const tabNum: number = 1;
 
     fixture.detectChanges();
@@ -131,7 +131,7 @@ describe('ArcherTabPanelComponent', () => {
     expect(res).toBeTrue();
   });
 
-  it(`should select first tab`, () => {
+  it(`should select the first tab`, () => {
     const tabNum: number = 0;
 
     fixture.detectChanges();
