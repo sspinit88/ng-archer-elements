@@ -1,7 +1,8 @@
-<ar-archer-tab-panel>
+<ar-archer-tab-panel [defaultSelectedTabIdx]="0">
+  <!--    -->
   <ar-archer-tab [title]="'sadasasdasd-Первый'"
                  [selected]="false"
-                 [disabled]="true">
+                 [disabled]="false">
 
     <form [formGroup]="form">
       <ar-form-field>
@@ -18,7 +19,8 @@
   </ar-archer-tab>
 
   <ar-archer-tab [title]="'3-Первый'"
-                 [selected]="false">
+                 [selected]="false"
+                 [disabled]="true">
     3
   </ar-archer-tab>
 </ar-archer-tab-panel>

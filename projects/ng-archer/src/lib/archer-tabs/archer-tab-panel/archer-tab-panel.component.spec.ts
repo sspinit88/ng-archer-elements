@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 import { ArcherTabsModule } from '../archer-tabs.module';
 import { ArcherTabComponent } from '../archer-tab/archer-tab.component';
 import { ArcherTabPanelComponent } from './archer-tab-panel.component';
-import { OTHERS_ERROR } from '../../messages/error-message.constants';
+import { OTHERS_ERROR } from '../../shered/messages/error-message.constants';
 
 @Component({
   selector: 'ar-fake',
@@ -75,6 +75,22 @@ describe('ArcherTabPanelComponent', () => {
           .debugElement
           .queryAll(By.directive(ArcherTabComponent));
       });
+  });
+
+  it('should selected second tab', () => {
+    const tabNum: number = 1;
+
+    tabs[0].componentInstance.disabled = true;
+
+    fixture.detectChanges();
+
+    const res = tabPanel
+      .nativeElement
+      .querySelectorAll('.ar-tab-btn')[tabNum]
+      .classList
+      .contains('selected');
+
+    expect(res).toBeTrue();
   });
 
   it(`should throw an error: ${OTHERS_ERROR.elementIsMissing}`, () => {

@@ -1,5 +1,5 @@
 import { Component, HostBinding, Input } from '@angular/core';
-import { ArcherTab } from '../interfaces/archer-tab.interface';
+import { ArcherTab } from '../../shered/interfaces/archer-tabs/archer-tab.interface';
 
 @Component({
   selector: 'ar-archer-tab',

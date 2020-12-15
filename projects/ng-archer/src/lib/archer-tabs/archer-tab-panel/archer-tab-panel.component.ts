@@ -1,12 +1,15 @@
 import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, Input, QueryList } from '@angular/core';
+
 import { ArcherTabComponent } from '../archer-tab/archer-tab.component';
-import { OTHERS_ERROR } from '../../messages/error-message.constants';
+
+import { OTHERS_ERROR } from '../../shered/messages/error-message.constants';
+import { ArcherTabEnum } from '../../shered/enums/archer-tabs/tab.enum';
 
 @Component({
   selector: 'ar-archer-tab-panel',
   templateUrl: './archer-tab-panel.component.html',
   styleUrls: [
-    './../../styles/reset.scss',
+    '../../shered/styles/reset.scss',
     './archer-tab-panel.component.scss',
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -18,14 +21,16 @@ export class ArcherTabPanelComponent
   tabs: QueryList<ArcherTabComponent>;
 
   @Input()
-  readonly defaultSelectedTabNum: number = 0;
+  readonly defaultSelectedTabIdx: number = 0;
+
+  readonly tabEnum: typeof ArcherTabEnum = ArcherTabEnum;
 
   constructor() {
   }
 
   ngAfterContentInit(): void {
     this.throwError();
-    this.checkTabsAndSelectFirst();
+    this.checkTabsAndEnableFirstActive(this.tabs);
   }
 
   onSelect(tab: ArcherTabComponent): void {
@@ -37,27 +42,44 @@ export class ArcherTabPanelComponent
     tab.selected = true;
   }
 
-  checkTabsAndSelectFirst(): void {
-    const tabsLength: number = this.tabs.toArray().length;
-    const selectedTab = this.tabs.find(tab => tab.selected);
-
-    if (!selectedTab) {
-      this.tabs
-        .forEach((tab, i) => {
-          if (
-            !(tabsLength < this.defaultSelectedTabNum)
-            && (i === this.defaultSelectedTabNum)
-          ) {
-            this.onSelect(tab);
-          }
-        });
-    }
+  checkTabsAndEnableFirstActive(tabs: QueryList<ArcherTabComponent>): void {
+    const defaultSelectedIdx = this.defaultSelectedTabIdx;
+    const disabledTabs: number[] = this.checkDisabledTabNum(tabs);
+    const notDisabledIdx: number[] = this.getAllNotDisabledIdx(tabs, disabledTabs);
+    const selectedIdx: number = notDisabledIdx.includes(defaultSelectedIdx) ? defaultSelectedIdx : notDisabledIdx[0];
+    this.onSelect(this.tabs.toArray()[selectedIdx]);
   }
 
-  // FIXME продолжить с этого места
-  checkSelectedTabNumber(num: number, tabs: QueryList<ArcherTabComponent>): void {
-    const tabsArray = tabs.toArray();
-    // console.log('tabsArray():', tabsArray);
+  getAllNotDisabledIdx(tabs: QueryList<ArcherTabComponent>, disabled: number[]): number[] {
+    const disabledTabs: number[] = [...disabled];
+    const tabsArray = [...tabs.toArray()];
+    const tabsIdxArray: number[] = tabsArray.map((item, i) => i);
+    return tabsIdxArray.filter(n => disabledTabs.indexOf(n) === -1);
+  }
+
+  checkDisabledTabNum(tabs: QueryList<ArcherTabComponent>): number[] {
+    const result: number[] = [];
+    const length: number = tabs.toArray().length;
+
+    if (length > 1) {
+      tabs
+        .toArray()
+        .forEach((item, j) => {
+
+          for (const key in item) {
+            if (
+              item.hasOwnProperty(key)
+              && (key === this.tabEnum.disabled)
+              && !!item[key]
+            ) {
+              result.push(j);
+            }
+          }
+
+        });
+    }
+
+    return result;
   }
 
   setClass(tab: ArcherTabComponent): {} {
