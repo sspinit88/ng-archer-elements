@@ -37,18 +37,25 @@ export class ArcherTabPanelComponent
   }
 
   onSelect(tab: ArcherTabComponent): void {
-    if (!!tab.disabled) {
+    if (
+      !!tab.disabled
+    ) {
       return;
-
     }
+
     this.tabs.forEach(item => item.selected = false);
     tab.selected = true;
   }
 
   checkTabsAndEnableFirstActive(tabs: QueryList<ArcherTabComponent>, selectedTab: number): void {
     const idx: number = this.archerTabPanelService.activeTabsIdx(tabs, selectedTab);
-    const tab: ArcherTabComponent = tabs[idx];
-    this.onSelect(tab);
+
+    tabs
+      .forEach((item, i) => {
+        if (i === idx) {
+          this.onSelect(item);
+        }
+      });
   }
 
   setClass(tab: ArcherTabComponent): {} {
