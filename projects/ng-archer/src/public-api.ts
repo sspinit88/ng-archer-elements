@@ -10,5 +10,5 @@ export * from './lib/archer-form-field/archer-form-field.component';
 // Tabs
 export * from './lib/archer-tabs/archer-tabs.module';
 export * from './lib/archer-tabs/archer-tab/archer-tab.component';
-export * from './lib/shered/interfaces/archer-tabs/archer-tab.interface';
+export * from './lib/shared/interfaces/archer-tabs/archer-tab.interface';
 

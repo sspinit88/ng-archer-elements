@@ -2,14 +2,14 @@ import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, 
 
 import { ArcherTabComponent } from '../archer-tab/archer-tab.component';
 
-import { OTHERS_ERROR } from '../../shered/messages/error-message.constants';
-import { ArcherTabEnum } from '../../shered/enums/archer-tabs/tab.enum';
+import { OTHERS_ERROR } from '../../shared/messages/error-message.constants';
+import { ArcherTabEnum } from '../../shared/enums/archer-tabs/tab.enum';
 
 @Component({
   selector: 'ar-archer-tab-panel',
   templateUrl: './archer-tab-panel.component.html',
   styleUrls: [
-    '../../shered/styles/reset.scss',
+    '../../shared/styles/reset.scss',
     './archer-tab-panel.component.scss',
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,

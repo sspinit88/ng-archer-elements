@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 import { ArcherTabsModule } from '../archer-tabs.module';
 import { ArcherTabComponent } from '../archer-tab/archer-tab.component';
 import { ArcherTabPanelComponent } from './archer-tab-panel.component';
-import { OTHERS_ERROR } from '../../shered/messages/error-message.constants';
+import { OTHERS_ERROR } from '../../shared/messages/error-message.constants';
 
 @Component({
   selector: 'ar-fake',

@@ -1,6 +1,6 @@
 import { Directive, Injector } from '@angular/core';
 import { AbstractControl, FormControl, NgControl, ValidationErrors } from '@angular/forms';
-import { OTHERS_ERROR } from '../shered/messages/error-message.constants';
+import { OTHERS_ERROR } from '../shared/messages/error-message.constants';
 
 @Directive({
   selector: '[formControlName]'

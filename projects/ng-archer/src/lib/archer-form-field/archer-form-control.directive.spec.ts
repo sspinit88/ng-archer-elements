@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ComponentFixture, getTestBed, TestBed } from '@angular/core/testing';
 import { ArcherFormControlDirective } from './archer-form-control.directive';
-import { OTHERS_ERROR } from '../shered/messages/error-message.constants';
+import { OTHERS_ERROR } from '../shared/messages/error-message.constants';
 
 @Component({
   selector: 'ar-fake',
