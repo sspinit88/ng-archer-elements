@@ -168,7 +168,7 @@ describe('ArcherTabPanelComponent', () => {
   });
 
   // FIXME delete
-  fit('should set all title of tabs', () => {
+  it('should set all title of tabs', () => {
     fixture.detectChanges();
 
     const titles: string[] = [];
