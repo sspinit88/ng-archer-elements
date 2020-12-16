@@ -81,12 +81,10 @@ export class ArcherFormControlDirective {
     this.isPristine = this.formHelperService.getPropertyBooleanValue(control, BooleanFormProperty.pristine).value;
   }
 
-  // FIXME тут иначе
   getValue(control: FormControl): void {
     this.value = control.value;
   }
 
-  // FIXME тут иначе
   getErrors(control: FormControl): void {
     this.errors = control.errors;
   }
