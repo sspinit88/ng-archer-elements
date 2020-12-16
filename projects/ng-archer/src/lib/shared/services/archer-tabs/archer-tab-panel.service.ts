@@ -31,7 +31,7 @@ export class ArcherTabPanelService {
   }
 
   // FIXME тестировать
-  checkDisabledTabNum(tabs: any): number[] {
+  checkDisabledTabNum(tabs: QueryList<ArcherTabComponent>): number[] {
     const result: number[] = [];
     const length: number = tabs.toArray().length;
 
