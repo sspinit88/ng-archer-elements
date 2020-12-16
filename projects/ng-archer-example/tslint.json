@@ -212,8 +212,7 @@
     // Классы, украшенные @Component, должны иметь суффикс «Компонент» (или пользовательский) в своем имени.
     "component-class-suffix": true,
     // Классы, украшенные @Directive, должны иметь суффикс «Directive» (или пользовательский) в своем названии.
-    "directive-class-suffix": true,
-    "noImplicitAny": true
+    "directive-class-suffix": true
   },
   "rulesDirectory": [
     "codelyzer"
