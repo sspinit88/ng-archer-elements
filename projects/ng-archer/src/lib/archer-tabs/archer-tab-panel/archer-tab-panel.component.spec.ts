@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ArcherTabsModule } from '../archer-tabs.module';
@@ -48,10 +48,10 @@ class FakeComponent {
 
 describe('ArcherTabPanelComponent', () => {
   let fixture: ComponentFixture<FakeComponent>;
-  let componentInstance;
+  let componentInstance: FakeComponent;
 
-  let tabPanel;
-  let tabs;
+  let tabPanel: DebugElement;
+  let tabs: DebugElement[];
 
   // FIXME замокать сервис ошибок
   beforeEach(async () => {
@@ -86,7 +86,7 @@ describe('ArcherTabPanelComponent', () => {
 
     fixture.detectChanges();
 
-    const res = tabPanel
+    const res: boolean = tabPanel
       .nativeElement
       .querySelectorAll('.ar-tab-btn')[tabNum]
       .classList
@@ -168,7 +168,7 @@ describe('ArcherTabPanelComponent', () => {
   });
 
   // FIXME delete
-  xit('should set all title of tabs', () => {
+  fit('should set all title of tabs', () => {
     fixture.detectChanges();
 
     const titles: string[] = [];
@@ -176,7 +176,7 @@ describe('ArcherTabPanelComponent', () => {
     tabPanel
       .nativeElement
       .querySelectorAll('.ar-tab-btn__title > .text')
-      .forEach(item => {
+      .forEach((item: HTMLSpanElement) => {
         titles.push(item.textContent.trim());
       });
 

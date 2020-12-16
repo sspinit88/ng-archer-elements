@@ -31,14 +31,14 @@ export class ArcherTabPanelService {
   }
 
   // FIXME тестировать
-  checkDisabledTabNum(tabs: any): number[] {
+  checkDisabledTabNum(tabs: QueryList<ArcherTabComponent>): number[] {
     const result: number[] = [];
     const length: number = tabs.toArray().length;
 
     if (length > 1) {
       tabs
         .toArray()
-        .forEach((item, j) => {
+        .forEach((item: ArcherTabComponent, j: number) => {
 
           for (const key in item) {
             if (

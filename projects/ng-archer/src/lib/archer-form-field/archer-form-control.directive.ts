@@ -7,7 +7,7 @@ import { OTHERS_ERROR } from '../shared/messages/error-message.constants';
 })
 export class ArcherFormControlDirective {
 
-  value: any = null;
+  value: unknown = null;
   control: FormControl | AbstractControl;
   errors: ValidationErrors | null;
 

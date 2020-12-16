@@ -11,7 +11,7 @@ describe('ErrorsService', () => {
   });
 
   it('should throw error', () => {
-    const testObj = null;
+    const testObj: unknown = null;
     const errorMsg: string = 'error error error error';
 
     expect(() => {

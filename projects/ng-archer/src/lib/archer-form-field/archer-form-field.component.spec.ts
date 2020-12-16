@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DebugElement, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ArcherFormFieldComponent } from './archer-form-field.component';
@@ -37,7 +37,7 @@ class FakeComponent
 describe('ArcherFormFieldComponent', () => {
   let fixture: ComponentFixture<FakeComponent>;
   let componentInstance;
-  let elFirst;
+  let elFirst: DebugElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
