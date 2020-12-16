@@ -3,7 +3,7 @@ import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, 
 import { ArcherTabComponent } from '../archer-tab/archer-tab.component';
 
 import { ArcherTabPanelService } from '../../shared/services/archer-tabs/archer-tab-panel.service';
-import { ErrorsService } from '../../shared/services/errors/errors.service';
+import { ErrorService } from '../../shared/services/errors/error.service';
 
 import { OTHERS_ERROR } from '../../shared/messages/error-message.constants';
 
@@ -27,7 +27,7 @@ export class ArcherTabPanelComponent
 
   constructor(
     private archerTabPanelService: ArcherTabPanelService,
-    private errorsService: ErrorsService
+    private errorsService: ErrorService
   ) {
   }
 

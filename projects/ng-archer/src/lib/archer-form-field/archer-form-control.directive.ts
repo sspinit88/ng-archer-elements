@@ -1,6 +1,12 @@
 import { Directive, Injector } from '@angular/core';
-import { AbstractControl, FormControl, NgControl, ValidationErrors } from '@angular/forms';
+import { FormControl, NgControl, ValidationErrors } from '@angular/forms';
+
+import { ErrorService } from '../shared/services/errors/error.service';
+import { FormHelperService } from '../shared/services/helpers/form-helper/form-helper.service';
+
 import { OTHERS_ERROR } from '../shared/messages/error-message.constants';
+import { Control } from '../shared/models/archer-form-field/control.model';
+import { BooleanFormProperty } from '../shared/enums/form/from-property.enum';
 
 @Directive({
   selector: '[formControlName]'
@@ -8,7 +14,7 @@ import { OTHERS_ERROR } from '../shared/messages/error-message.constants';
 export class ArcherFormControlDirective {
 
   value: unknown = null;
-  control: FormControl | AbstractControl;
+  control: FormControl;
   errors: ValidationErrors | null;
 
   isTouched: boolean;
@@ -22,6 +28,8 @@ export class ArcherFormControlDirective {
 
   constructor(
     protected injector: Injector,
+    protected errorService: ErrorService,
+    protected formHelperService: FormHelperService,
   ) {
   }
 
@@ -30,6 +38,7 @@ export class ArcherFormControlDirective {
   }
 
   getControl(ngControl: NgControl): FormControl {
+    this.missingControl(ngControl);
     return ngControl.control as FormControl;
   }
 
@@ -46,76 +55,44 @@ export class ArcherFormControlDirective {
     this.getIsPristine(this.control);
   }
 
-  switchIsTouched(control: FormControl | AbstractControl): void {
-    try {
-      this.isTouched = control.touched;
-      this.isUnTouched = control.untouched;
-    } catch (e) {
-      this.missingControl(control);
-    }
+  switchIsTouched(control: FormControl): void {
+    this.isTouched = this.formHelperService.getPropertyBooleanValue(control, BooleanFormProperty.touched).value;
+    this.isUnTouched = this.formHelperService.getPropertyBooleanValue(control, BooleanFormProperty.untouched).value;
   }
 
-  getErrors(control: FormControl | AbstractControl): void {
-    try {
-      this.errors = control.errors;
-    } catch (e) {
-      this.missingControl(control);
-    }
+  setIsValid(control: FormControl): void {
+    this.isInvalid = this.formHelperService.getPropertyBooleanValue(control, BooleanFormProperty.invalid).value;
+    this.isValid = this.formHelperService.getPropertyBooleanValue(control, BooleanFormProperty.valid).value;
   }
 
-  setIsValid(control: FormControl | AbstractControl): void {
-    try {
-      this.isInvalid = control.invalid;
-      this.isValid = control.valid;
-    } catch (e) {
-      this.missingControl(control);
-    }
+  setIsDisabled(control: FormControl): void {
+    this.isDisabled = this.formHelperService.getPropertyBooleanValue(control, BooleanFormProperty.disabled).value;
   }
 
-  setIsDisabled(control: FormControl | AbstractControl): void {
-    try {
-      this.isDisabled = control.disabled;
-    } catch (e) {
-      this.missingControl(control);
-    }
+  setIsPending(control: FormControl): void {
+    this.isPending = this.formHelperService.getPropertyBooleanValue(control, BooleanFormProperty.pending).value;
   }
 
-  setIsPending(control: FormControl | AbstractControl): void {
-    try {
-      this.isPending = control.pending;
-    } catch (e) {
-      this.missingControl(control);
-    }
+  setIsDirty(control: FormControl): void {
+    this.isDirty = this.formHelperService.getPropertyBooleanValue(control, BooleanFormProperty.dirty).value;
   }
 
-  setIsDirty(control: FormControl | AbstractControl): void {
-    try {
-      this.isDirty = control.dirty;
-    } catch (e) {
-      this.missingControl(control);
-    }
+  getIsPristine(control: FormControl): void {
+    this.isPristine = this.formHelperService.getPropertyBooleanValue(control, BooleanFormProperty.pristine).value;
   }
 
-  getValue(control: FormControl | AbstractControl): void {
-    try {
-      this.value = control.value;
-    } catch (e) {
-      this.missingControl(control);
-    }
+  // FIXME тут иначе
+  getValue(control: FormControl): void {
+    this.value = control.value;
   }
 
-  getIsPristine(control: FormControl | AbstractControl): void {
-    try {
-      this.isPristine = control.pristine;
-    } catch (e) {
-      this.missingControl(control);
-    }
+  // FIXME тут иначе
+  getErrors(control: FormControl): void {
+    this.errors = control.errors;
   }
 
-  missingControl(control: FormControl | AbstractControl): void {
-    if (!control) {
-      throw new Error(OTHERS_ERROR.componentIsMissing);
-    }
+  missingControl(control: Control | NgControl): void {
+    this.errorService.checkAndThrowError(control, OTHERS_ERROR.componentIsMissing);
   }
 
 }

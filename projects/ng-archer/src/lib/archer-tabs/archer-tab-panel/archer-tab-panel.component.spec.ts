@@ -53,7 +53,7 @@ describe('ArcherTabPanelComponent', () => {
   let tabPanel: DebugElement;
   let tabs: DebugElement[];
 
-  // FIXME замокать сервис ошибок
+  // FIXME замокать сервисы и проверить все тесты!!!!
   beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [
@@ -78,8 +78,7 @@ describe('ArcherTabPanelComponent', () => {
       });
   });
 
-  // FIXME
-  xit('should selected second tab', () => {
+  it('should selected second tab', () => {
     const tabNum: number = 1;
 
     tabs[0].componentInstance.disabled = true;
@@ -95,8 +94,8 @@ describe('ArcherTabPanelComponent', () => {
     expect(res).toBeTrue();
   });
 
-  // FIXME переписать, замокать сервис ошибок
-  xit(`should throw an error: ${OTHERS_ERROR.elementIsMissing}`, () => {
+  // FIXME сервис ошибок ???
+  it(`should throw an error: ${OTHERS_ERROR.elementIsMissing}`, () => {
     fixture.detectChanges();
 
     tabPanel.componentInstance.tabs = undefined;
@@ -108,8 +107,7 @@ describe('ArcherTabPanelComponent', () => {
     }).toThrow(new Error(OTHERS_ERROR.elementIsMissing));
   });
 
-  // FIXME delete
-  xit('should select the third tab after clicking', () => {
+  it('should select the third tab after clicking', () => {
     const tabNum: number = 2;
 
     fixture.detectChanges();
@@ -130,8 +128,7 @@ describe('ArcherTabPanelComponent', () => {
     expect(res).toBeTrue();
   });
 
-  // FIXME delete
-  xit('should select the second tab after clicking', () => {
+  it('should select the second tab after clicking', () => {
     const tabNum: number = 1;
 
     fixture.detectChanges();
@@ -152,8 +149,7 @@ describe('ArcherTabPanelComponent', () => {
     expect(res).toBeTrue();
   });
 
-  // FIXME delete
-  xit(`should select the first tab`, () => {
+  it(`should select the first tab`, () => {
     const tabNum: number = 0;
 
     fixture.detectChanges();
@@ -167,7 +163,6 @@ describe('ArcherTabPanelComponent', () => {
     expect(res).toBeTrue();
   });
 
-  // FIXME delete
   it('should set all title of tabs', () => {
     fixture.detectChanges();
 
@@ -177,7 +172,8 @@ describe('ArcherTabPanelComponent', () => {
       .nativeElement
       .querySelectorAll('.ar-tab-btn__title > .text')
       .forEach((item: HTMLSpanElement) => {
-        titles.push(item.textContent.trim());
+        const data: string = (!!item && item.textContent != null) ? item.textContent.trim() : '';
+        titles.push(data);
       });
 
     expect([
@@ -188,8 +184,7 @@ describe('ArcherTabPanelComponent', () => {
 
   });
 
-  // FIXME
-  xit('should get three tabs', () => {
+  it('should get three tabs', () => {
     fixture.detectChanges();
     expect(tabs.length).toBe(3);
   });

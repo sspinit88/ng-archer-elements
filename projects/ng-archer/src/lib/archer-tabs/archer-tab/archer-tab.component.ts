@@ -17,7 +17,7 @@ export class ArcherTabComponent
   selected: boolean = false;
 
   @Input()
-  num: number = null;
+  num: number | null = null;
 
   @Input()
   disabled: boolean = false;
