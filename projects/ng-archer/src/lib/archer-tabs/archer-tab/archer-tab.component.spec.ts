@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { OTHERS_ERROR } from '../../shared/messages/error-message.constants';
 
 import { ArcherTabComponent } from './archer-tab.component';
 

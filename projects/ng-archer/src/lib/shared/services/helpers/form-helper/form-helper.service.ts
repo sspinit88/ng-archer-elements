@@ -11,7 +11,7 @@ export class FormHelperService {
 
   constructor() {
   }
-  // FIXME тестировать
+
   getPropertyBooleanValue(control: FormControl, property: keyof typeof BooleanFormProperty): PropertyCheckResult {
     return {
       exist: (!!control && (property in control)),
