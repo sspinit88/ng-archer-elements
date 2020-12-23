@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
@@ -12,6 +11,7 @@ import { ComponentFixture, getTestBed, TestBed } from '@angular/core/testing';
 import { ArcherFormControlDirective } from './archer-form-control.directive';
 import { ErrorService } from '../shared/services/errors/error.service';
 import { FormHelperService } from '../shared/services/helpers/form-helper/form-helper.service';
+import { BooleanFormProperty } from '../shared/enums/form/from-property.enum';
 
 @Component({
   selector: 'ar-fake',
@@ -46,10 +46,11 @@ describe('ArcherFormControlDirective', () => {
   let fixture: ComponentFixture<FakeComponent>;
   let componentInstance;
   let directive: ArcherFormControlDirective;
-  let controlFirst: FormControl | AbstractControl;
-  let controlSecond: FormControl | AbstractControl;
-  let mockErrorService: ErrorService;
-  let mockFormHelperService: FormHelperService;
+  let controlFirst: FormControl;
+  let controlSecond: FormControl;
+  let mockErrorService: jasmine.SpyObj<ErrorService>;
+  let mockFormHelperService: jasmine.SpyObj<FormHelperService>;
+  const property: typeof BooleanFormProperty = BooleanFormProperty;
   // tslint:disable-next-line
   let injector;
 
@@ -71,6 +72,9 @@ describe('ArcherFormControlDirective', () => {
         FormsModule,
         ReactiveFormsModule,
       ],
+      providers: [
+        { provide: FormHelperService, useValue: mockFormHelperService }
+      ],
     }).compileComponents()
       .then(() => {
         fixture = TestBed.createComponent(FakeComponent);
@@ -81,52 +85,54 @@ describe('ArcherFormControlDirective', () => {
 
         fixture.detectChanges();
 
-        controlFirst = componentInstance.form.controls.first;
-        controlSecond = componentInstance.form.controls.second;
+        controlFirst = componentInstance.form.controls.first as FormControl;
+        controlSecond = componentInstance.form.controls.second as FormControl;
       });
   });
 
-  xit('should set isPristine', () => {
-    directive.getIsPristine(controlFirst as FormControl);
-    expect(directive.isPristine).toBe(controlFirst.pristine);
+  it('should to have been called mockFormHelperService.getPropertyBooleanValue()', () => {
+    mockFormHelperService
+      .getPropertyBooleanValue
+      .and
+      .returnValue({ exist: true, value: false });
+
+    directive.setIsDirty(controlFirst);
+
+    expect(mockFormHelperService.getPropertyBooleanValue)
+      .toHaveBeenCalledWith(controlFirst, property.dirty);
+
+    expect(mockFormHelperService.getPropertyBooleanValue)
+      .toHaveBeenCalledTimes(1);
   });
 
-  xit('should set isTouched', () => {
-    directive.switchIsTouched(controlFirst as FormControl);
-    expect(directive.isTouched).toBe(controlFirst.touched);
+  it('should set all value in true', () => {
+    mockFormHelperService
+      .getPropertyBooleanValue
+      .and
+      .returnValue({ exist: true, value: true });
+
+    directive.setAll(controlFirst);
+
+    expect(directive.isTouched).toBeTrue();
+    expect(directive.isUnTouched).toBeTrue();
+    expect(directive.isPending).toBeTrue();
+    expect(directive.isPristine).toBeTrue();
+    expect(directive.isDirty).toBeTrue();
+    expect(directive.isDisabled).toBeTrue();
+    expect(directive.isValid).toBeTrue();
+    expect(directive.isInvalid).toBeTrue();
   });
 
-  xit('should set errors', () => {
-    directive.getErrors(controlFirst as FormControl);
-    expect(directive.errors).toBe(controlFirst.errors);
-  });
-
-  xit('should set isInvalid and isValid', () => {
-    directive.setIsValid(controlFirst as FormControl);
-    expect(directive.isInvalid).toBe(controlFirst.invalid);
-    expect(directive.isValid).toBe(controlFirst.valid);
-  });
-
-  xit('should set isDisabled', () => {
-    directive.setIsDisabled(controlFirst as FormControl);
-    expect(directive.isDisabled).toBe(controlFirst.disabled);
-  });
-
-  xit('should set isPending', () => {
-    directive.setIsPending(controlFirst as FormControl);
-    expect(directive.isPending).toBe(controlFirst.pending);
-  });
-
-  xit('should set isDirty', () => {
-    directive.setIsDirty(controlSecond as FormControl);
-    expect(directive.isDirty).toBe(controlSecond.dirty);
+  it('should set error\'s value', () => {
+    directive.getErrors(controlFirst);
+    expect(directive.errors).toEqual(controlFirst.errors);
   });
 
   it('should set value from control', () => {
-    directive.getValue(controlFirst as FormControl);
+    directive.getValue(controlFirst);
     expect(directive.value === controlFirst.value).toBeTruthy();
 
-    directive.getValue(controlSecond as FormControl);
+    directive.getValue(controlSecond);
     expect(directive.value === controlSecond.value).toBeTruthy();
   });
 

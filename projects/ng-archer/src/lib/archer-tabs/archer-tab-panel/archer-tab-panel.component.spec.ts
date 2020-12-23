@@ -94,7 +94,6 @@ describe('ArcherTabPanelComponent', () => {
     expect(res).toBeTrue();
   });
 
-  // FIXME сервис ошибок ???
   it(`should throw an error: ${OTHERS_ERROR.elementIsMissing}`, () => {
     fixture.detectChanges();
 

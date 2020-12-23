@@ -45,14 +45,18 @@ export class ArcherFormControlDirective {
   controlInit(): void {
     const ngControl: NgControl = this.getNgControl() as NgControl;
     this.control = this.getControl(ngControl);
-    this.getValue(this.control);
-    this.switchIsTouched(this.control);
-    this.getErrors(this.control);
-    this.setIsDisabled(this.control);
-    this.setIsValid(this.control);
-    this.setIsDirty(this.control);
-    this.setIsPending(this.control);
-    this.getIsPristine(this.control);
+    this.setAll(this.control);
+  }
+
+  setAll(control: FormControl): void {
+    this.getValue(control);
+    this.switchIsTouched(control);
+    this.getErrors(control);
+    this.setIsDisabled(control);
+    this.setIsValid(control);
+    this.setIsDirty(control);
+    this.setIsPending(control);
+    this.getIsPristine(control);
   }
 
   switchIsTouched(control: FormControl): void {
