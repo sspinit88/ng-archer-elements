@@ -1,4 +1,5 @@
-import { Injectable, QueryList } from '@angular/core';
+import { Injectable } from '@angular/core';
+
 import { ArcherTabComponent } from '../../../archer-tabs/archer-tab/archer-tab.component';
 import { ArcherTabEnum } from '../../enums/archer-tabs/tab.enum';
 
@@ -12,8 +13,7 @@ export class ArcherTabPanelService {
   constructor() {
   }
 
-  // FIXME тестировать
-  activeTabsIdx(tabs: QueryList<ArcherTabComponent>, defaultSelectedTabIdx: number): number {
+  activeTabsIdx(tabs: ArcherTabComponent[], defaultSelectedTabIdx: number): number {
     const defaultSelectedIdx = defaultSelectedTabIdx;
     const disabledTabs: number[] = this.checkDisabledTabNum(tabs);
     const notDisabledIdx: number[] = this.getAllNotDisabledIdx(tabs, disabledTabs);
@@ -21,23 +21,19 @@ export class ArcherTabPanelService {
     return notDisabledIdx.includes(defaultSelectedIdx) ? defaultSelectedIdx : notDisabledIdx[0];
   }
 
-  // FIXME тестировать
-  getAllNotDisabledIdx(tabs: QueryList<ArcherTabComponent>, disabled: number[]): number[] {
+  getAllNotDisabledIdx(tabs: ArcherTabComponent[], disabled: number[]): number[] {
     const disabledTabs: number[] = [...disabled];
-    const tabsArray = [...tabs.toArray()];
-    const tabsIdxArray: number[] = tabsArray.map((item, i) => i);
+    const tabsIdxArray: number[] = tabs.map((item, i) => i);
 
     return tabsIdxArray.filter(n => disabledTabs.indexOf(n) === -1);
   }
 
-  // FIXME тестировать
-  checkDisabledTabNum(tabs: QueryList<ArcherTabComponent>): number[] {
+  checkDisabledTabNum(tabs: ArcherTabComponent[]): number[] {
     const result: number[] = [];
-    const length: number = tabs.toArray().length;
+    const length: number = tabs.length;
 
     if (length > 1) {
       tabs
-        .toArray()
         .forEach((item: ArcherTabComponent, j: number) => {
 
           for (const key in item) {

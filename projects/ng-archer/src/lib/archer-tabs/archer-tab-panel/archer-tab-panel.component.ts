@@ -48,7 +48,7 @@ export class ArcherTabPanelComponent
   }
 
   checkTabsAndEnableFirstActive(tabs: QueryList<ArcherTabComponent>, selectedTab: number): void {
-    const idx: number = this.archerTabPanelService.activeTabsIdx(tabs, selectedTab);
+    const idx: number = this.archerTabPanelService.activeTabsIdx(tabs.toArray(), selectedTab);
 
     tabs
       .forEach((item, i) => {
