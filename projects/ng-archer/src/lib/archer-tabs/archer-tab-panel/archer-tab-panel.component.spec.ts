@@ -53,7 +53,6 @@ describe('ArcherTabPanelComponent', () => {
   let tabPanel: DebugElement;
   let tabs: DebugElement[];
 
-  // FIXME замокать сервисы и проверить все тесты!!!!
   beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [
