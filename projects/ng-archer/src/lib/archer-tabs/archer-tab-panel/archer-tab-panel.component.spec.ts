@@ -11,17 +11,17 @@ import { OTHERS_ERROR } from '../../shared/messages/error-message.constants';
   template: `
     <ar-archer-tab-panel>
       <ar-archer-tab [title]="tabs.one.title">
-        <p>
+        <p id="one">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet culpa dolorem excepturi possimus quaerat, saepe!</p>
       </ar-archer-tab>
 
       <ar-archer-tab [title]="tabs.two.title">
-        <p>
+        <p id="two">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet culpa dolorem excepturi possimus quaerat, saepe!</p>
       </ar-archer-tab>
 
       <ar-archer-tab [title]="tabs.three.title">
-        <p>
+        <p id="three">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet culpa dolorem excepturi possimus quaerat, saepe!</p>
       </ar-archer-tab>
     </ar-archer-tab-panel>
@@ -52,6 +52,10 @@ describe('ArcherTabPanelComponent', () => {
 
   let tabPanel: DebugElement;
   let tabs: DebugElement[];
+
+  const selectedClass: string = 'selected';
+  const tabSelectorName: string = 'ar-archer-tab';
+  const tabBtnClassName: string = '.ar-tab-btn';
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
@@ -84,13 +88,19 @@ describe('ArcherTabPanelComponent', () => {
 
     fixture.detectChanges();
 
-    const res: boolean = tabPanel
+    const resTab: boolean = tabPanel
       .nativeElement
-      .querySelectorAll('.ar-tab-btn')[tabNum]
+      .querySelectorAll((tabBtnClassName))[tabNum]
       .classList
-      .contains('selected');
+      .contains(selectedClass);
 
-    expect(res).toBeTrue();
+    const resContent: boolean = tabPanel
+      .nativeElement
+      .querySelectorAll((tabSelectorName))[tabNum]
+      .classList
+      .contains(selectedClass);
+
+    expect(resTab && resContent).toBeTrue();
   });
 
   it(`should throw an error: ${OTHERS_ERROR.elementIsMissing}`, () => {
@@ -112,18 +122,24 @@ describe('ArcherTabPanelComponent', () => {
 
     tabPanel
       .nativeElement
-      .querySelectorAll('.ar-tab-btn')[tabNum]
+      .querySelectorAll((tabBtnClassName))[tabNum]
       .dispatchEvent(new Event('click'));
 
     fixture.detectChanges();
 
-    const res = tabPanel
+    const resTab = tabPanel
       .nativeElement
-      .querySelectorAll('.ar-tab-btn')[tabNum]
+      .querySelectorAll((tabBtnClassName))[tabNum]
       .classList
-      .contains('selected');
+      .contains(selectedClass);
 
-    expect(res).toBeTrue();
+    const resContent: boolean = tabPanel
+      .nativeElement
+      .querySelectorAll((tabSelectorName))[tabNum]
+      .classList
+      .contains(selectedClass);
+
+    expect(resTab && resContent).toBeTrue();
   });
 
   it('should select the second tab after clicking', () => {
@@ -133,18 +149,24 @@ describe('ArcherTabPanelComponent', () => {
 
     tabPanel
       .nativeElement
-      .querySelectorAll('.ar-tab-btn')[tabNum]
+      .querySelectorAll((tabBtnClassName))[tabNum]
       .dispatchEvent(new Event('click'));
 
     fixture.detectChanges();
 
-    const res = tabPanel
+    const resTab = tabPanel
       .nativeElement
-      .querySelectorAll('.ar-tab-btn')[1]
+      .querySelectorAll((tabBtnClassName))[tabNum]
       .classList
-      .contains('selected');
+      .contains(selectedClass);
 
-    expect(res).toBeTrue();
+    const resContent: boolean = tabPanel
+      .nativeElement
+      .querySelectorAll((tabSelectorName))[tabNum]
+      .classList
+      .contains(selectedClass);
+
+    expect(resTab && resContent).toBeTrue();
   });
 
   it(`should select the first tab`, () => {
@@ -152,13 +174,19 @@ describe('ArcherTabPanelComponent', () => {
 
     fixture.detectChanges();
 
-    const res = tabPanel
+    const resTab = tabPanel
       .nativeElement
-      .querySelectorAll('.ar-tab-btn')[tabNum]
+      .querySelectorAll((tabBtnClassName))[tabNum]
       .classList
-      .contains('selected');
+      .contains(selectedClass);
 
-    expect(res).toBeTrue();
+    const resContent: boolean = tabPanel
+      .nativeElement
+      .querySelectorAll((tabSelectorName))[tabNum]
+      .classList
+      .contains(selectedClass);
+
+    expect(resTab && resContent).toBeTrue();
   });
 
   it('should set all title of tabs', () => {
