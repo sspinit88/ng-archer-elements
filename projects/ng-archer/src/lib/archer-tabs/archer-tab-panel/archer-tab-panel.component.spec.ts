@@ -81,6 +81,46 @@ describe('ArcherTabPanelComponent', () => {
       });
   });
 
+  it('should set num of first tab === 654', () => {
+    const tabNum: number = 0;
+    const num: number = 654;
+
+    tabs[0].componentInstance.selected = true;
+    tabs[0].componentInstance.num = num;
+
+    fixture.detectChanges();
+
+    const res: string = tabPanel
+      .nativeElement
+      .querySelectorAll((tabBtnClassName))[tabNum]
+      .querySelector('.num')
+      .textContent;
+
+    expect(res).toContain(`${num}`);
+  });
+
+  it('should disables first and last tab', () => {
+    const testArray: number[] = [0, 2];
+    const res: number[] = [];
+
+    tabs[0].componentInstance.disabled = true;
+    tabs[tabs.length - 1].componentInstance.disabled = true;
+
+    fixture.detectChanges();
+
+    tabPanel
+      .nativeElement
+      .querySelectorAll((tabBtnClassName))
+      .forEach((item: HTMLElement, i: number) => {
+        if (!item.classList.contains(selectedClass)) {
+          res.push(i);
+        }
+      });
+
+    expect(res.length).toBe(2);
+    expect(res).toEqual(testArray);
+  });
+
   it('should selected second tab', () => {
     const tabNum: number = 1;
 
