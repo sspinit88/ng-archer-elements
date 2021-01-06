@@ -73,7 +73,10 @@ describe('ArcherFormControlDirective', () => {
         ReactiveFormsModule,
       ],
       providers: [
-        { provide: FormHelperService, useValue: mockFormHelperService }
+        {
+          provide: FormHelperService,
+          useValue: mockFormHelperService
+        }
       ],
     }).compileComponents()
       .then(() => {

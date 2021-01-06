@@ -33,7 +33,7 @@ describe('ArcherTabPanelService', () => {
       });
   });
 
-  fit('should return first not disabled index of tabs (=== 2)', () => {
+  it('should return first not disabled index of tabs (=== 2)', () => {
     expect(service.activeTabsIdx(fakeTabArray, 1))
       .toBe(2);
   });
