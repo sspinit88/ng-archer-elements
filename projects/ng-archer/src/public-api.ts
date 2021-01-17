@@ -12,3 +12,6 @@ export * from './lib/archer-tabs/archer-tabs.module';
 export * from './lib/archer-tabs/archer-tab/archer-tab.component';
 export * from './lib/shared/interfaces/archer-tabs/archer-tab.interface';
 
+// Button
+export * from './lib/archer-btn/archer-btn.module';
+export * from './lib/archer-btn/archer-btn/archer-btn.component';

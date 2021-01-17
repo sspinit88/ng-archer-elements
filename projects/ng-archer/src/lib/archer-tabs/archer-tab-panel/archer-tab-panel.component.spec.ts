@@ -65,7 +65,6 @@ describe('ArcherTabPanelComponent', () => {
       imports: [
         ArcherTabsModule,
       ],
-
     }).compileComponents()
       .then(() => {
         fixture = TestBed.createComponent(FakeComponent);

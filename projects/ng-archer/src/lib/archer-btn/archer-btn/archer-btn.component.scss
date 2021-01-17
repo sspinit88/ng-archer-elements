@@ -1,0 +1,35 @@
+
+:host {
+  display: inline-block;
+  height: 32px;
+
+  text-align: center;
+  cursor: pointer;
+
+  padding: 4px;
+  border: none;
+  font: inherit;
+
+  .ar-btn {
+    &_primary {
+
+    }
+
+    &_accent {
+
+    }
+
+    &_warn {
+
+    }
+
+    &_disabled {
+
+    }
+
+    &-content {
+
+    }
+
+  }
+}

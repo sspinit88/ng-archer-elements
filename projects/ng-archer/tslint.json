@@ -15,6 +15,7 @@
       true,
       "element",
       "ar",
+      "camelCase",
       "kebab-case"
     ]
   }

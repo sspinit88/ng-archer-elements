@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ArcherFormControlModule, ArcherTabsModule } from 'projects/ng-archer/src/public-api';
+import { ArcherBtnModule, ArcherFormControlModule, ArcherTabsModule } from 'projects/ng-archer/src/public-api';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
     ArcherFormControlModule,
     ArcherTabsModule,
+    ArcherBtnModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
