@@ -1,26 +1,35 @@
-<ar-archer-tab-panel>
-  <!--    -->
-  <ar-archer-tab [title]="'sadasasdasd-Первый'"
-                 [selected]="false"
-                 [disabled]="true">
+<div class="example">
+  <ar-archer-tab-panel>
+    <!--    -->
+    <ar-archer-tab [title]="'sadasasdasd-Первый'"
+                   [selected]="false"
+                   [disabled]="false">
 
-    <form [formGroup]="form">
-      <ar-form-field>
-        <input formControlName="inp"
-               type="text">
-      </ar-form-field>
-      <p> Результат ввода: <span>{{ inputValue }}</span></p>
-    </form>
-  </ar-archer-tab>
+      <form [formGroup]="form">
+        <ar-form-field>
+          <input formControlName="inp"
+                 type="text">
+        </ar-form-field>
+        <p> Результат ввода: <span>{{ inputValue }}</span></p>
+      </form>
+    </ar-archer-tab>
 
-  <ar-archer-tab [title]="'2-Первый'"
-                 [selected]="false">
-    <p>2</p>
-  </ar-archer-tab>
+    <ar-archer-tab [title]="'2-Первый'"
+                   [selected]="false">
+      <p>2</p>
+    </ar-archer-tab>
 
-  <ar-archer-tab [title]="'3-Первый'"
-                 [selected]="false"
-                 [disabled]="true">
-    3
-  </ar-archer-tab>
-</ar-archer-tab-panel>
+    <ar-archer-tab [title]="'3-Первый'"
+                   [selected]="false"
+                   [disabled]="false">
+      3
+    </ar-archer-tab>
+  </ar-archer-tab-panel>
+</div>
+
+<p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque beatae esse id illum, laboriosam suscipit totam
+  voluptatem. Aspernatur consectetur consequatur cumque, cupiditate dignissimos eius facere impedit ipsum maiores
+  molestiae necessitatibus nesciunt nihil quas quidem recusandae reiciendis repellat vero voluptatem! Ad architecto
+  autem expedita, illum labore nobis perspiciatis quas sed veritatis?
+</p>

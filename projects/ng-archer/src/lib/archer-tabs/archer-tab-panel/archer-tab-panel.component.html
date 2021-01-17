@@ -1,40 +1,37 @@
-<div class="ar-tab-wrapper">
+<div class="ar-tab-header">
 
-  <div class="ar-tab-wrapper__header">
-
-    <ng-container *ngIf="tabs">
-      <ul class="ar-tab-header">
-        <li *ngFor="let tab of tabs"
-            (click)="onSelect(tab)"
-            [ngClass]="setClass(tab)"
-            class="ar-tab-btn">
-          <div class="ar-tab-btn__title">
+  <ng-container *ngIf="tabs">
+    <ul class="ar-tab-header__list">
+      <li *ngFor="let tab of tabs"
+          (click)="onSelect(tab)"
+          [ngClass]="setClass(tab)"
+          class="ar-tab-btn">
+        <div class="ar-tab-btn__title">
             <span class="text">
               {{ tab.title }}
             </span>
-            <span *ngIf="!!tab.num"
-                  class="num">
+          <span *ngIf="!!tab.num"
+                class="num">
               {{ tab.num }}
             </span>
-          </div>
-          <div class="ar-tab-btn__title_shadow">
+        </div>
+        <div class="ar-tab-btn__title_shadow">
             <span class="text">
               {{ tab.title }}
             </span>
-            <span *ngIf="!!tab.num"
-                  class="num">
+          <span *ngIf="!!tab.num"
+                class="num">
               {{ tab.num }}
             </span>
-          </div>
-        </li>
-      </ul>
-    </ng-container>
+        </div>
+      </li>
+    </ul>
+  </ng-container>
 
-    <div class="ar-tab-wrapper__header_line"></div>
-  </div>
-
-  <div class="ar-tab-wrapper__content">
-    <ng-content></ng-content>
-  </div>
-
+  <div class="ar-tab-header_line"></div>
 </div>
+
+<div class="ar-tab-content">
+  <ng-content></ng-content>
+</div>
+

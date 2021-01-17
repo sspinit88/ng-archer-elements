@@ -11,7 +11,6 @@ import { OTHERS_ERROR } from '../../shared/messages/error-message.constants';
   selector: 'ar-archer-tab-panel',
   templateUrl: './archer-tab-panel.component.html',
   styleUrls: [
-    '../../shared/styles/reset.scss',
     './archer-tab-panel.component.scss',
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
